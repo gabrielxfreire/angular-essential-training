@@ -17,8 +17,23 @@ export class MediaItemFormComponent implements OnInit {
         Validators.pattern('[\\w\\-\\s\\/]+')
       ])),
       category: new FormControl(''),
-      year: new FormControl(''),
+      year: new FormControl('', this.yearValidator),
     });
+  }
+
+  yearValidator(control: FormControl) {
+    if (control.value.empty) {
+      return null;
+    } else {
+      const year = parseInt(control.value, 10);
+      const minYear = 1900;
+      const maxYear = 2100;
+      if (year >= minYear && year <= maxYear) {
+        return null;
+      } else {
+        return { year: true };
+      }
+    }
   }
 
   onSubmit(mediaItem) {
