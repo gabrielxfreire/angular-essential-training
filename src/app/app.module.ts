@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {Injectable, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
@@ -7,8 +7,10 @@ import { MediaItemListComponent } from './media-item-list.component';
 import { FavoriteDirective } from './favorite.directive';
 import { CategoryListPipe } from './category-list.pipe';
 import { MediaItemFormComponent } from './media-item-form.component';
-import { MediaItemService } from './media-item.service';
 
+@Injectable({
+  providedIn: 'root'
+})
 @NgModule({
   imports: [
     BrowserModule,
@@ -21,9 +23,6 @@ import { MediaItemService } from './media-item.service';
     FavoriteDirective,
     CategoryListPipe,
     MediaItemFormComponent
-  ],
-  providers: [
-    MediaItemService
   ],
   bootstrap: [
     AppComponent
